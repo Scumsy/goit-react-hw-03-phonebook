@@ -17,6 +17,15 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {}
+  componentDidUpdate(prevState) {
+    const { contacts } = this.state;
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
+  componentWillUnmount() {}
+
   onFormInput = evt => {
     this.setState({ [evt.target.name]: evt.target.value });
   };
